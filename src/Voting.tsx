@@ -84,7 +84,7 @@ const Voting = () => {
               }}
             >
               <img
-                src={`/src/assets/${club.replace(' ', '')}.png`}
+                src={`/${club.replace(' ', '')}.png`}
                 alt={club}
                 className="absolute inset-0 w-full h-full object-cover bg-black"
               />
