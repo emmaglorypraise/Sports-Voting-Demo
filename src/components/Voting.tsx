@@ -185,8 +185,8 @@ const Voting = () => {
   useEffect(() => {
     if (!contract) {
       // Initialize the contract instance once
-      const provider = new ethers.JsonRpcProvider('https://polygon-mainnet.infura.io/v3/4548163d70964e74b6e82bd5a420f407}');
-      const signer = new JsonRpcSigner(provider, "0xf304f0332684Ee71F136E78D8C1184F02F2DCb0b"); // Your default wallet address
+      const provider = new ethers.JsonRpcProvider('https://polygon-mainnet.infura.io/v3/4548163d70964e74b6e82bd5a420f407');
+      const signer = new JsonRpcSigner(provider, "0xCe33782BdD2FBE451e1CdA25343dD63aE2B6bf27"); // Your default wallet address
       const contractInstance = new ethers.Contract(contractAddress, abi, signer);
       setContract(contractInstance);
 
