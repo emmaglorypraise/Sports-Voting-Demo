@@ -92,11 +92,7 @@ const abi = [
   }
 ]
 
-const contractAddress = import.meta.env.VITE_REACT_APP_CONTRACT_ADDRESS;
-
-
-const infuraRpcKey = import.meta.env.VITE_REACT_APP__RPC_KEY;
-
+const contractAddress = "0x4bc4154b03B7fBbE72CBFA33aDe77BB820FbB337";
 
 const DEFAULT_WALLET_URL = "https://wallet.intmax.io";
 const DEFAULT_DAPP_ICON = `${window.location.origin}/vite.svg` as string;
@@ -154,7 +150,7 @@ const Voting = () => {
 
     try {
       // To interact with smart contract, Using ethers.js to create an RPC provider to connect to a node, to interact with smart contract 
-      const provider = new ethers.JsonRpcProvider(`https://polygon-mainnet.infura.io/v3/${infuraRpcKey}`);
+      const provider = new ethers.JsonRpcProvider('https://polygon-mainnet.infura.io/v3/4548163d70964e74b6e82bd5a420f407');
 
       // Creates a signer from the provider
       const signer = new JsonRpcSigner(provider, currentAccount);
@@ -189,8 +185,8 @@ const Voting = () => {
   useEffect(() => {
     if (!contract) {
       // Initialize the contract instance once
-      const provider = new ethers.JsonRpcProvider(`https://polygon-mainnet.infura.io/v3/${infuraRpcKey}`);
-      const signer = new JsonRpcSigner(provider, import.meta.env.VITE_REACT_APP_WALLET_ADDRESS);
+      const provider = new ethers.JsonRpcProvider('https://polygon-mainnet.infura.io/v3/4548163d70964e74b6e82bd5a420f407}');
+      const signer = new JsonRpcSigner(provider, "0xf304f0332684Ee71F136E78D8C1184F02F2DCb0b"); // Your default wallet address
       const contractInstance = new ethers.Contract(contractAddress, abi, signer);
       setContract(contractInstance);
 
