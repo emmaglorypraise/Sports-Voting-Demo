@@ -10,9 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "intmax-walletsdk": "^0.0.3",
+    "@rainbow-me/rainbowkit": "^2.0.6",
+    "@tanstack/react-query": "^5.32.1",
+    "ethers": "^6.12.0",
+    "intmax-walletsdk": "^0.0.4",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "viem": "^2.9.31",
+    "wagmi": "^2.8.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
@@ -21,6 +26,7 @@
     "@typescript-eslint/parser": "^7.2.0",
     "@vitejs/plugin-react": "^4.2.1",
     "autoprefixer": "^10.4.19",
+    "dotenv": "^16.4.5",
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
