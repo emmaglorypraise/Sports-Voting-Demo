@@ -95,9 +95,10 @@ const abi = [
 const contractAddress = "0x4bc4154b03B7fBbE72CBFA33aDe77BB820FbB337";
 
 const DEFAULT_WALLET_URL = "https://wallet.intmax.io";
-const DEFAULT_DAPP_ICON = `${window.location.origin}/vite.svg` as string;
+// const DEFAULT_WALLET_URL = "https://intmaxwallet-sdk-wallet.vercel.app/";
+const DEFAULT_DAPP_ICON = `${window.location.origin}/logo.png`;
 const DAPP_METADATA = {
-  name: "INTMAX Dapp Example",
+  name: "My brand name",
   description: "This is a simple example of how to use the sdk dapp client.",
   icons: [DEFAULT_DAPP_ICON],
 };
@@ -126,6 +127,7 @@ const Voting = () => {
     await intmaxWalletProvider.request({ method: "eth_requestAccounts", params: [] });
     const accounts = (await intmaxWalletProvider.request({ method: "eth_accounts", params: [] })) as string[];
     setAccounts(accounts);
+
   };
 
   const handleSignMessage = async (club: string) => {
@@ -184,11 +186,20 @@ const Voting = () => {
 
   useEffect(() => {
     if (!contract) {
+      const initContractAndFetchData = async () => {
       // Initialize the contract instance once
       const provider = new ethers.JsonRpcProvider('https://polygon-mainnet.infura.io/v3/4548163d70964e74b6e82bd5a420f407');
       const signer = new JsonRpcSigner(provider, "0xCe33782BdD2FBE451e1CdA25343dD63aE2B6bf27"); // Your default wallet address
       const contractInstance = new ethers.Contract(contractAddress, abi, signer);
       setContract(contractInstance);
+
+      try {
+        const balanceWei = await provider.getBalance("0xCe33782BdD2FBE451e1CdA25343dD63aE2B6bf27");
+        const balanceEther = ethers.formatEther(balanceWei);
+        console.log("Balance in Polygon:", balanceEther);
+      } catch (error) {
+        console.error("Error fetching balance:", error);
+      }
 
 
       // Fetch initial vote counts from the contract
@@ -203,6 +214,12 @@ const Voting = () => {
         setVoteCounts(counts);
       };
       fetchVoteCounts();
+
+      
+
+    }
+    // Call the async function
+    initContractAndFetchData();
     }
   }, [contract]);
 
